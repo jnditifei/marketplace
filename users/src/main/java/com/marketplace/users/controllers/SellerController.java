@@ -1,0 +1,83 @@
+package com.marketplace.users.controllers;
+
+import com.marketplace.users.models.RoleEnum;
+import com.marketplace.users.models.SellerEntity;
+import com.marketplace.users.services.SellerService;
+import com.marketplace.users.services.exceptions.InvalidEmailOrPasswordException;
+import com.marketplace.users.services.exceptions.InvalidEntityToPersistException;
+import com.marketplace.users.services.exceptions.NotFoundEntityException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+
+@RestController
+@RequestMapping(value = "marketplace/seller")
+public class SellerController {
+
+    @Autowired
+    SellerService sellerService;
+
+
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public ResponseEntity<Object> createSeller(@RequestBody @Valid SellerEntity seller){
+        try{
+            seller.setRole(RoleEnum.SELLER);
+            sellerService.save(seller);
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        }
+        catch(InvalidEmailOrPasswordException e){
+            e.getErrorDto().setStatus(400);
+            e.getErrorDto().setPath("/seller/register");
+            return new ResponseEntity<>(e.getErrorDto(), HttpStatus.BAD_REQUEST);
+        }catch (InvalidEntityToPersistException e){
+            e.getErrorDto().setStatus(400);
+            e.getErrorDto().setPath("/seller/register");
+            return new ResponseEntity<>(e.getErrorDto(), HttpStatus.BAD_REQUEST);
+        }catch(Exception e){
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public ResponseEntity<Object> getBydId(@PathVariable int id){
+        try{
+            return new ResponseEntity<>(sellerService.getById(id), HttpStatus.OK);
+        }catch(NotFoundEntityException e){
+            e.getErrorDto().setStatus(400);
+            e.getErrorDto().setPath("/seller/{id}}");
+            return new ResponseEntity<>(e.getErrorDto(), HttpStatus.BAD_REQUEST);
+        }catch(Exception e){
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    public ResponseEntity<Object> createSeller(){
+        try{
+            return new ResponseEntity<>(sellerService.all(), HttpStatus.OK);
+        }catch(NotFoundEntityException e){
+            e.getErrorDto().setStatus(400);
+            e.getErrorDto().setPath("/seller/all");
+            return new ResponseEntity<>(e.getErrorDto(), HttpStatus.BAD_REQUEST);
+        }catch(Exception e){
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Object> delete(@PathVariable int id) {
+        try {
+            sellerService.delete(id);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (NotFoundEntityException e) {
+            e.getErrorDto().setStatus(400);
+            e.getErrorDto().setPath("/users/delete");
+            return new ResponseEntity<>(e.getErrorDto(), HttpStatus.BAD_REQUEST);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+}

@@ -1,13 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6fa2cbf0-6368-46fe-97c9-8c3d01d04c3a" name="Default Changelist" comment="" />
+    <list default="true" id="6fa2cbf0-6368-46fe-97c9-8c3d01d04c3a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_h2database_h2_1_4_200.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/java/com/marketplace/users/controllers/BuyerController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/java/com/marketplace/users/controllers/SellerController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/java/com/marketplace/users/controllers/UserControllers.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/java/com/marketplace/users/models/BuyerEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/java/com/marketplace/users/models/RoleEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/java/com/marketplace/users/models/SellerEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/java/com/marketplace/users/models/SexEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/java/com/marketplace/users/models/UserEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/java/com/marketplace/users/repositories/BuyerRepo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/java/com/marketplace/users/repositories/SellerRepo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/java/com/marketplace/users/repositories/UserRepo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/java/com/marketplace/users/services/BuyerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/java/com/marketplace/users/services/GenericService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/java/com/marketplace/users/services/SellerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/java/com/marketplace/users/services/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/java/com/marketplace/users/services/exceptions/ErrorMsgDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/java/com/marketplace/users/services/exceptions/InvalidEmailOrPasswordException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/java/com/marketplace/users/services/exceptions/InvalidEntityToPersistException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/java/com/marketplace/users/services/exceptions/NotFoundEntityException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/java/com/marketplace/users/services/implementations/BuyerImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/java/com/marketplace/users/services/implementations/SellerImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/java/com/marketplace/users/services/implementations/UserImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/test/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment/src/main/java/com/marketplace/payment/PaymentApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment/src/test/java/com/marketplace/payment/PaymentApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/users/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/users/src/main/resources/application.properties" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1Xfcsm2xlwtlwaU70dMp6H4iBa1" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -15,6 +72,8 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last.edited.regexp" value="0629631622" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/payment" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -38,6 +97,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="352" y="201" width="800" height="675" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1581440908827" />
+    <state x="418" y="177" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583246841866">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="418" y="177" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1583246841866" />
+    <state x="1028" y="305" width="460" height="560" key="#com.intellij.ide.util.MemberChooser" timestamp="1583247495164">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1028" y="305" width="460" height="560" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1583247495164" />
     <state x="607" y="432" width="290" height="214" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1581441305995">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -46,14 +113,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="535" y="248" width="424" height="578" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1581441376767" />
+    <state x="493" y="177" width="924" height="682" key="Maven.ArtifactSearchDialog" timestamp="1583165364334">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="493" y="177" width="924" height="682" key="Maven.ArtifactSearchDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1583165364334" />
     <state x="409" y="239" width="675" height="597" key="NewModule_or_Project.wizard" timestamp="1581441441206">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="409" y="239" width="675" height="597" key="NewModule_or_Project.wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1581441441206" />
-    <state x="240" y="117" width="1024" height="843" key="SettingsEditor" timestamp="1581441452114">
+    <state x="240" y="117" width="1024" height="843" key="SettingsEditor" timestamp="1583249257087">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="240" y="117" width="1024" height="843" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1581441452114" />
+    <state x="240" y="117" width="1024" height="843" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1583249257087" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1583256353424">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="498" height="446" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1583256353424" />
     <state x="450" y="367" key="com.intellij.ide.util.TipDialog" timestamp="1583155709186">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
