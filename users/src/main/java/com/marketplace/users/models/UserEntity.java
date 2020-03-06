@@ -55,8 +55,7 @@ public class UserEntity {
     public UserEntity() {
     }
 
-    public UserEntity(int userId, @NotNull String fistName, @NotNull String lastName, @NotNull @Pattern(message = "L'email n'est pas valide", regexp = "[^@]+@[^@]+") String email, @NotNull String password) {
-        this.userId = userId;
+    public UserEntity(@NotNull String fistName, @NotNull String lastName, @NotNull @Pattern(message = "L'email n'est pas valide", regexp = "[^@]+@[^@]+") String email, @NotNull String password) {
         this.fistName = fistName;
         this.lastName = lastName;
         this.email = email;

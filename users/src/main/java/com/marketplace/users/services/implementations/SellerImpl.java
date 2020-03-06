@@ -40,23 +40,23 @@ public class SellerImpl implements SellerService {
 
     @Override
     public SellerEntity getById(int userId) throws NotFoundEntityException {
-        if(sellerRepo.findById(userId) == null)
-            throw new NotFoundEntityException("ID invalide","Aucun compte avec cet idée n'existe", localization+"getById");
-        SellerEntity seller = sellerRepo.findById(userId).get();
-        return seller;
+        if (!sellerRepo.findById(userId).isPresent()) {
+            throw new NotFoundEntityException("ID invalide", "Aucun compte avec cet idée n'existe", localization + "getById");
+        } else {
+            return sellerRepo.findById(userId).get();
+        }
     }
 
     @Override
     public List<SellerEntity> all() throws NotFoundEntityException {
-        if(sellerRepo.findAll() == null)
+        if(sellerRepo.findAll().isEmpty())
             throw new NotFoundEntityException("Aucun objet","Aucun objet n'a encore été créé dans la base de donnée", localization+"all");
-        List<SellerEntity> sellers = sellerRepo.findAll();
-        return sellers;
+        return sellerRepo.findAll();
     }
 
     @Override
     public void delete(int userId) throws NotFoundEntityException {
-        if(sellerRepo.findById(userId) == null)
+        if(!sellerRepo.findById(userId).isPresent())
             throw new NotFoundEntityException("Aucun objet","Aucun objet n'a encore été créé dans la base de donnée", localization+"delete");
         SellerEntity deleteSeller = sellerRepo.findById(userId).get();
         sellerRepo.delete(deleteSeller);

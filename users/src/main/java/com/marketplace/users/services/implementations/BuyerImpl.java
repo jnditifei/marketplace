@@ -30,7 +30,6 @@ public class BuyerImpl implements BuyerService {
         if (userRepo.findByEmail(buyerEntity.getEmail()) != null)
             throw new InvalidEmailOrPasswordException("Email invalide", "Cette adresse Email est déjà rattachée à un compte", localisation+"save");
         buyerRepo.save(buyerEntity);
-
     }
 
     @Override
@@ -40,23 +39,21 @@ public class BuyerImpl implements BuyerService {
 
     @Override
     public BuyerEntity getById(int userId) throws NotFoundEntityException {
-        if(buyerRepo.findById(userId)==null)
+        if(!buyerRepo.findById(userId).isPresent())
             throw new NotFoundEntityException("ID invalide","Aucun compte avec cet idée n'existe", localisation+"getById");
-        BuyerEntity buyer = buyerRepo.findById(userId).get();
-        return buyer;
+        return buyerRepo.findById(userId).get();
     }
 
     @Override
     public List<BuyerEntity> all() throws NotFoundEntityException {
-        if(buyerRepo.findAll()==null)
+        if(buyerRepo.findAll().isEmpty())
             throw new NotFoundEntityException("Aucun objet","Aucun objet n'a encore été créé dans la base de donnée", localisation+"all");
-        List<BuyerEntity> buyers = buyerRepo.findAll();
-        return buyers;
+        return buyerRepo.findAll();
     }
 
     @Override
     public void delete(int userId) throws NotFoundEntityException {
-        if(buyerRepo.findById(userId)==null)
+        if(!buyerRepo.findById(userId).isPresent())
             throw new NotFoundEntityException("Aucun objet","Aucun objet n'a encore été créé dans la base de donnée", localisation+"delete");
         BuyerEntity deleteBuyer = buyerRepo.getOne(userId);
         buyerRepo.delete(deleteBuyer);
