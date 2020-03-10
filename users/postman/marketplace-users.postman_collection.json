@@ -1,0 +1,206 @@
+{
+	"id": "8dc707ca-d2b1-fae8-6d94-1ec560c0cd67",
+	"name": "marketplace/users",
+	"description": "",
+	"order": [
+		"62fcb4db-0034-0cbb-ff84-3cec68b1b713"
+	],
+	"folders": [
+		{
+			"name": "Seller",
+			"description": "",
+			"collectionId": "8dc707ca-d2b1-fae8-6d94-1ec560c0cd67",
+			"order": [
+				"50d980fe-39fc-4372-a888-598535e52ce7",
+				"803a2d16-a473-ab06-c75c-3c945defa550",
+				"fe33df12-724d-af57-7e69-37dc1826e84d",
+				"4bb76dab-7de5-a453-4b8a-6fdf602dd083"
+			],
+			"owner": 0,
+			"folders_order": [],
+			"id": "010bbcf3-c49b-7741-b33d-053d2af130dc"
+		}
+	],
+	"folders_order": [
+		"010bbcf3-c49b-7741-b33d-053d2af130dc"
+	],
+	"timestamp": 1583873388459,
+	"owner": 0,
+	"public": false,
+	"requests": [
+		{
+			"id": "4bb76dab-7de5-a453-4b8a-6fdf602dd083",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8081/marketplace/seller/all",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "8dc707ca-d2b1-fae8-6d94-1ec560c0cd67",
+			"data": [],
+			"dataMode": "raw",
+			"name": "all",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1583873602967,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "010bbcf3-c49b-7741-b33d-053d2af130dc",
+			"rawModeData": "{\n\t\"fistName\": \"Takeshi\",\n\t\"lastName\": \"Kovac\",\n\t\"email\": \"takeshikovac@test.com\",\n\t\"password\":\"2384\",\n\t\"birthDate\": \"1989-10-09\",\n\t\"address\": \"cyberpunk street\",\n\t\"city\": \"harlan\",\n\t\"postalCode\": \"23498\",\n\t\"phoneNumber\": \"0629631622\"\n}"
+		},
+		{
+			"id": "50d980fe-39fc-4372-a888-598535e52ce7",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8081/marketplace/seller/register",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "8dc707ca-d2b1-fae8-6d94-1ec560c0cd67",
+			"data": [],
+			"dataMode": "raw",
+			"name": "create seller",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1583873417138,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "010bbcf3-c49b-7741-b33d-053d2af130dc",
+			"rawModeData": "{\n\t\"fistName\": \"Takeshi\",\n\t\"lastName\": \"Kovac\",\n\t\"email\": \"takeshikovac@test.com\",\n\t\"password\":\"2384\",\n\t\"birthDate\": \"1989-10-09\",\n\t\"address\": \"cyberpunk street\",\n\t\"city\": \"harlan\",\n\t\"postalCode\": \"23498\",\n\t\"phoneNumber\": \"0629631622\"\n}"
+		},
+		{
+			"id": "62fcb4db-0034-0cbb-ff84-3cec68b1b713",
+			"headers": "//email: takeshikovac@test.com\n",
+			"headerData": [
+				{
+					"key": "email",
+					"value": "takeshikovac@test.com",
+					"description": "",
+					"enabled": false
+				}
+			],
+			"url": "http://localhost:8081/marketplace/user/login?email=takeshikovac@test.com&password=2384",
+			"queryParams": [
+				{
+					"key": "email",
+					"value": "takeshikovac@test.com",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "2384",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "8dc707ca-d2b1-fae8-6d94-1ec560c0cd67",
+			"data": [],
+			"dataMode": "raw",
+			"name": "login",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1583873494977,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\n\t\"fistName\": \"Takeshi\",\n\t\"lastName\": \"Kovac\",\n\t\"email\": \"takeshikovac@test.com\",\n\t\"password\":\"2384\",\n\t\"birthDate\": \"1989-10-09\",\n\t\"address\": \"cyberpunk street\",\n\t\"city\": \"harlan\",\n\t\"postalCode\": \"23498\",\n\t\"phoneNumber\": \"0629631622\"\n}"
+		},
+		{
+			"id": "803a2d16-a473-ab06-c75c-3c945defa550",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8081/marketplace/seller/1",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "8dc707ca-d2b1-fae8-6d94-1ec560c0cd67",
+			"data": [],
+			"dataMode": "raw",
+			"name": "get seller id:1",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1583873458860,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "010bbcf3-c49b-7741-b33d-053d2af130dc",
+			"rawModeData": "{\n\t\"fistName\": \"Takeshi\",\n\t\"lastName\": \"Kovac\",\n\t\"email\": \"takeshikovac@test.com\",\n\t\"password\":\"2384\",\n\t\"birthDate\": \"1989-10-09\",\n\t\"address\": \"cyberpunk street\",\n\t\"city\": \"harlan\",\n\t\"postalCode\": \"23498\",\n\t\"phoneNumber\": \"0629631622\"\n}"
+		},
+		{
+			"id": "fe33df12-724d-af57-7e69-37dc1826e84d",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8081/marketplace/seller/delete/1",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "DELETE",
+			"collectionId": "8dc707ca-d2b1-fae8-6d94-1ec560c0cd67",
+			"data": [],
+			"dataMode": "raw",
+			"name": "delete",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1583873577822,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "010bbcf3-c49b-7741-b33d-053d2af130dc",
+			"rawModeData": "{\n\t\"fistName\": \"Takeshi\",\n\t\"lastName\": \"Kovac\",\n\t\"email\": \"takeshikovac@test.com\",\n\t\"password\":\"2384\",\n\t\"birthDate\": \"1989-10-09\",\n\t\"address\": \"cyberpunk street\",\n\t\"city\": \"harlan\",\n\t\"postalCode\": \"23498\",\n\t\"phoneNumber\": \"0629631622\"\n}"
+		}
+	]
+}

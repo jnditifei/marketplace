@@ -30,7 +30,6 @@ public class SellerImpl implements SellerService {
         if (userRepo.findByEmail(sellerEntity.getEmail()) != null)
             throw new InvalidEmailOrPasswordException("Email invalide", "Cette adresse Email est déjà rattachée à un compte", localization+"save");
         sellerRepo.save(sellerEntity);
-
     }
 
     @Override

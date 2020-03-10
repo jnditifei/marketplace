@@ -35,7 +35,7 @@ class UserImplTest {
 
     @Test
     void loginInvalidEmailOrPasswordTest(){
-        Assertions.assertThrows(InvalidEmailOrPasswordException.class, ()-> userService.login("a@a.con", "test") );
+        Assertions.assertThrows(InvalidEmailOrPasswordException.class, ()-> userService.login("a@a.com", "test") );
     }
 
 }

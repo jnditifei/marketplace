@@ -36,7 +36,7 @@ public class SellerController {
             e.getErrorDto().setStatus(400);
             e.getErrorDto().setPath("/seller/register");
             return new ResponseEntity<>(e.getErrorDto(), HttpStatus.BAD_REQUEST);
-        }catch(Exception e){
+        }catch(RuntimeException e){
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -49,20 +49,20 @@ public class SellerController {
             e.getErrorDto().setStatus(400);
             e.getErrorDto().setPath("/seller/{id}}");
             return new ResponseEntity<>(e.getErrorDto(), HttpStatus.BAD_REQUEST);
-        }catch(Exception e){
+        }catch(RuntimeException e){
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
-    public ResponseEntity<Object> createSeller(){
+    public ResponseEntity<Object> getAll(){
         try{
             return new ResponseEntity<>(sellerService.all(), HttpStatus.OK);
         }catch(NotFoundEntityException e){
             e.getErrorDto().setStatus(400);
             e.getErrorDto().setPath("/seller/all");
             return new ResponseEntity<>(e.getErrorDto(), HttpStatus.BAD_REQUEST);
-        }catch(Exception e){
+        }catch(RuntimeException e){
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -76,7 +76,7 @@ public class SellerController {
             e.getErrorDto().setStatus(400);
             e.getErrorDto().setPath("/users/delete");
             return new ResponseEntity<>(e.getErrorDto(), HttpStatus.BAD_REQUEST);
-        } catch (Exception e) {
+        } catch (RuntimeException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

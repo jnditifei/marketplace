@@ -3,9 +3,11 @@ package com.marketplace.users.services.implementations;
 import com.marketplace.users.models.BuyerEntity;
 import com.marketplace.users.repositories.BuyerRepo;
 import com.marketplace.users.services.BuyerService;
+import com.marketplace.users.services.exceptions.InvalidEmailOrPasswordException;
 import com.marketplace.users.services.exceptions.InvalidEntityToPersistException;
 import com.marketplace.users.services.exceptions.NotFoundEntityException;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -17,7 +19,8 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
+import static org.mockito.MockitoAnnotations.initMocks;
 
 @ExtendWith(MockitoExtension.class)
 class BuyerImplTest {
@@ -28,15 +31,24 @@ class BuyerImplTest {
     @InjectMocks
     private BuyerService buyerService= new BuyerImpl();
 
+    @BeforeEach
+    void setup(){
+        initMocks(this);
+    }
+
     @Test
     void save() {
     }
 
     @Test
-    void saveInvalidEntityToPersistTest(){
+    void saveInvalidEntityToPersist(){
         BuyerEntity buyer = new BuyerEntity();
         buyer.setUserId(1);
         Assertions.assertThrows(InvalidEntityToPersistException.class, ()-> buyerService.save(buyer));
+    }
+
+    @Test
+    void saveInvalideEmailorPasswordException() {
     }
 
     @Test
@@ -76,7 +88,7 @@ class BuyerImplTest {
     }
 
     @Test
-    void deleteNotFoundExceptionTest(){
+    void deleteNotFoundException(){
         Assertions.assertThrows(NotFoundEntityException.class, ()-> buyerService.delete(1));
     }
 }

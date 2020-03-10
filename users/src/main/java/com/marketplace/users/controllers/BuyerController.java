@@ -34,7 +34,7 @@ public class BuyerController {
             e.getErrorDto().setStatus(400);
             e.getErrorDto().setPath("/buyer/register");
             return new ResponseEntity<>(e.getErrorDto(), HttpStatus.BAD_REQUEST);
-        }catch (Exception e){
+        }catch (RuntimeException e){
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -47,7 +47,7 @@ public class BuyerController {
             e.getErrorDto().setStatus(400);
             e.getErrorDto().setPath("/buyer/{id}");
             return new ResponseEntity<>(e.getErrorDto(), HttpStatus.BAD_REQUEST);
-        }catch (Exception e){
+        }catch (RuntimeException e){
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -60,7 +60,7 @@ public class BuyerController {
             e.getErrorDto().setStatus(400);
             e.getErrorDto().setPath("/buyer/all");
             return new ResponseEntity<>(e.getErrorDto(), HttpStatus.BAD_REQUEST);
-        }catch (Exception e){
+        }catch (RuntimeException e){
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -74,7 +74,7 @@ public class BuyerController {
             e.getErrorDto().setStatus(400);
             e.getErrorDto().setPath("/buyer/delete/{id}");
             return new ResponseEntity<>(e.getErrorDto(), HttpStatus.BAD_REQUEST);
-        }catch(Exception e){
+        }catch(RuntimeException e){
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

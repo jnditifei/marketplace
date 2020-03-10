@@ -43,6 +43,11 @@ class SellerImplTest {
         Assertions.assertThrows(InvalidEntityToPersistException.class, ()-> sellerService.save(seller));
     }
 
+    @Test
+    void saveInvalidEmailOrPassword() {
+        SellerEntity seller = new SellerEntity("AAA", "aaa", "a@a.com", "test");
+    }
+
 
     @Test
     void update() {
