@@ -9,7 +9,7 @@ import java.util.List;
 public interface GenericService<Entity, ID> {
 
     void save(Entity entity) throws InvalidEntityToPersistException, InvalidEmailOrPasswordException;
-    Entity update(Entity entity);
+    Entity update(Entity entity) throws NotFoundEntityException;
     Entity getById(int userId) throws  NotFoundEntityException;
     List<Entity> all() throws NotFoundEntityException;
     void delete(int userId) throws NotFoundEntityException;

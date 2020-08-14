@@ -20,7 +20,8 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class SellerImplTest {
@@ -33,8 +34,7 @@ class SellerImplTest {
     private SellerService sellerService = new SellerImpl();
 
     @Test
-    void save() {
-    }
+    void save() {}
 
     @Test
     void saveInvalidEntityToPersistTest(){
@@ -50,7 +50,9 @@ class SellerImplTest {
 
 
     @Test
-    void update() {
+    void updateNotFoundException() {
+        SellerEntity seller = new SellerEntity("AAA", "aaa", "a@a.com", "test");
+        assertThrows(NotFoundEntityException.class, ()-> sellerService.update(seller));
     }
 
     @Test

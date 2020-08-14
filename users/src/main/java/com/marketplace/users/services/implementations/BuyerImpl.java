@@ -27,14 +27,16 @@ public class BuyerImpl implements BuyerService {
     public void save(BuyerEntity buyerEntity) throws InvalidEmailOrPasswordException, InvalidEntityToPersistException {
         if(buyerEntity.getUserId() != 0)
             throw new InvalidEntityToPersistException("Id Invalid", "Un compte avec cet ID existe déjà", localisation+"save");
-        if (userRepo.findByEmail(buyerEntity.getEmail()) != null)
+        if (userRepo.findByEmail(buyerEntity.getEmail()).isPresent())
             throw new InvalidEmailOrPasswordException("Email invalide", "Cette adresse Email est déjà rattachée à un compte", localisation+"save");
         buyerRepo.save(buyerEntity);
     }
 
     @Override
-    public BuyerEntity update(BuyerEntity buyerEntity) {
-        return null;
+    public BuyerEntity update(BuyerEntity buyer) throws NotFoundEntityException {
+        if(!buyerRepo.findById(buyer.getUserId()).isPresent())
+            throw new NotFoundEntityException("Id Invalide", "L'objet n'existe pas", "");
+        return buyerRepo.save(buyer);
     }
 
     @Override

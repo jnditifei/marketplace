@@ -1,5 +1,7 @@
 package com.marketplace.users.models;
 
+import com.marketplace.users.models.enumerations.RoleEnum;
+import com.marketplace.users.models.enumerations.SexEnum;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;

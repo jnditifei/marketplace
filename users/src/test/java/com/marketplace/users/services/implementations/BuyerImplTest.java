@@ -52,7 +52,9 @@ class BuyerImplTest {
     }
 
     @Test
-    void update() {
+    void updateNotFoundException() {
+        BuyerEntity buyer = new BuyerEntity("AAA", "aaa", "a@a.com", "test");
+        assertThrows(NotFoundEntityException.class, ()-> buyerService.update(buyer));
     }
 
     @Test

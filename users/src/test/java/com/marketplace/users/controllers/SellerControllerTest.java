@@ -69,6 +69,25 @@ class SellerControllerTest {
     }
 
     @Test
+    void updateSeller() throws NotFoundEntityException {
+        SellerEntity seller = new SellerEntity("AAA", "aaa", "a@a.com", "test");
+        seller.setUserId(1);
+        when(mockSellerService.update(any(SellerEntity.class))).thenReturn(seller);
+        ResponseEntity response = sellerController.update(seller);
+        assertTrue(response.getBody().equals(seller));
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+    }
+
+    @Test
+    void updateNotFoundEntity() throws NotFoundEntityException {
+        NotFoundEntityException e = new NotFoundEntityException("Id invalid", "", "");
+        doThrow(e).when(mockSellerService).update(any(SellerEntity.class));
+        ResponseEntity response = sellerController.update(new SellerEntity("AAA", "aaa", "a@a.com", "test"));
+        assertTrue(response.getBody().equals(e.getErrorDto()));
+        assertEquals(response.getStatusCode(), HttpStatus.BAD_REQUEST);
+    }
+
+    @Test
     void getBydId() throws NotFoundEntityException {
         SellerEntity seller = new SellerEntity("AAA", "aaa", "a@a.com", "test");
         when(mockSellerService.getById(1)).thenReturn(seller);

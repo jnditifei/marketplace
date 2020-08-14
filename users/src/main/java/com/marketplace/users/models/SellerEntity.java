@@ -1,5 +1,7 @@
 package com.marketplace.users.models;
 
+import com.marketplace.users.models.enumerations.SexEnum;
+
 import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
