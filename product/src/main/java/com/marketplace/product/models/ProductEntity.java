@@ -4,6 +4,7 @@ package com.marketplace.product.models;
 import com.marketplace.product.models.enumerations.categoryEnum;
 import com.marketplace.product.models.enumerations.conditionEnum;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 ;
 import java.util.List;
@@ -30,6 +31,17 @@ public class ProductEntity {
     protected categoryEnum category;
 
     private List<String> image;
+
+    public List<CommentEntity> getComment() {
+        return comment;
+    }
+
+    public void setComment(List<CommentEntity> comment) {
+        this.comment = comment;
+    }
+
+    @DBRef(lazy = true)
+    private List<CommentEntity> comment;
 
     public ProductEntity() {
     }
