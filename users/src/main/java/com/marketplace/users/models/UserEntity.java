@@ -1,5 +1,7 @@
 package com.marketplace.users.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.marketplace.users.models.enumerations.RoleEnum;
 import com.marketplace.users.models.enumerations.SexEnum;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -8,6 +10,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -39,20 +42,18 @@ public class UserEntity {
     @Enumerated(EnumType.STRING)
     protected SexEnum sex;
 
-    @Column(nullable = true)
-    protected String address;
-
-    @Column(nullable = true)
-    protected String city;
-
-    @Pattern(message = "Le code postal doit être composé uniquement de 5 chiffres", regexp = "([0-9]{5})|({0})")
-    protected String postalCode;
+    @OneToMany(mappedBy = "owner",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    @JsonManagedReference
+    private List<AddressEntity> addresses;
 
     @Pattern(message = "Le numéro de téléphone doit être composé uniquement de 10 chiffres", regexp = "([0-9]{10})|({0})")
     protected String phoneNumber;
 
     @Enumerated(EnumType.STRING)
     protected RoleEnum role;
+
 
     public UserEntity() {
     }
@@ -64,7 +65,7 @@ public class UserEntity {
         this.password = password;
     }
 
-    public UserEntity(int userId, @NotNull String fistName, @NotNull String lastName, @NotNull @Pattern(message = "L'email n'est pas valide", regexp = "[^@]+@[^@]+") String email, @NotNull String password, Date birthDate, SexEnum sex, String address, String city, @Pattern(message = "Le code postal doit être composé uniquement de 5 chiffres", regexp = "([0-9]{5})|({0})") String postalCode, @Pattern(message = "Le numéro de téléphone doit être composé uniquement de 10 chiffres", regexp = "([0-9]{10})|({0})") String phoneNumber) {
+    public UserEntity(int userId, @NotNull String fistName, @NotNull String lastName, @NotNull @Pattern(message = "L'email n'est pas valide", regexp = "[^@]+@[^@]+") String email, @NotNull String password, Date birthDate, SexEnum sex, @Pattern(message = "Le numéro de téléphone doit être composé uniquement de 10 chiffres", regexp = "([0-9]{10})|({0})") String phoneNumber) {
         this.userId = userId;
         this.fistName = fistName;
         this.lastName = lastName;
@@ -72,9 +73,6 @@ public class UserEntity {
         this.password = password;
         this.birthDate = birthDate;
         this.sex = sex;
-        this.address = address;
-        this.city = city;
-        this.postalCode = postalCode;
         this.phoneNumber = phoneNumber;
     }
 
@@ -134,30 +132,6 @@ public class UserEntity {
         this.sex = sex;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getPostalCode() {
-        return postalCode;
-    }
-
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
-    }
-
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -172,6 +146,14 @@ public class UserEntity {
 
     public void setRole(RoleEnum role) {
         this.role = role;
+    }
+
+    public List<AddressEntity> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(List<AddressEntity> addresses) {
+        this.addresses = addresses;
     }
 
     @Override
@@ -197,15 +179,12 @@ public class UserEntity {
                 Objects.equals(password, that.password) &&
                 Objects.equals(birthDate, that.birthDate) &&
                 sex == that.sex &&
-                Objects.equals(address, that.address) &&
-                Objects.equals(city, that.city) &&
-                Objects.equals(postalCode, that.postalCode) &&
                 Objects.equals(phoneNumber, that.phoneNumber) &&
                 role == that.role;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId, fistName, lastName, email, password, birthDate, sex, address, city, postalCode, phoneNumber, role);
+        return Objects.hash(userId, fistName, lastName, email, password, birthDate, sex, phoneNumber, role);
     }
 }

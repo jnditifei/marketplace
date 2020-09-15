@@ -26,4 +26,5 @@ public class UserController {
             return new ResponseEntity<>(e.getErrorDto(), HttpStatus.BAD_REQUEST);
         }
     }
+
 }

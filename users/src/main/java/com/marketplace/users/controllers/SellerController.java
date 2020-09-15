@@ -2,12 +2,11 @@ package com.marketplace.users.controllers;
 
 import com.marketplace.users.models.enumerations.RoleEnum;
 import com.marketplace.users.models.SellerEntity;
-import com.marketplace.users.models.enumerations.SexEnum;
 import com.marketplace.users.services.SellerService;
+import com.marketplace.users.services.UserService;
 import com.marketplace.users.services.exceptions.InvalidEmailOrPasswordException;
 import com.marketplace.users.services.exceptions.InvalidEntityToPersistException;
 import com.marketplace.users.services.exceptions.NotFoundEntityException;
-import org.hibernate.cfg.CreateKeySecondPass;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,8 +19,7 @@ import javax.validation.Valid;
 public class SellerController {
 
     @Autowired
-    SellerService sellerService;
-
+    UserService sellerService;
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public ResponseEntity<Object> createSeller(@RequestBody @Valid SellerEntity seller){

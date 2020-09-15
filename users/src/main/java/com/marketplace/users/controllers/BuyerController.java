@@ -3,6 +3,7 @@ package com.marketplace.users.controllers;
 import com.marketplace.users.models.BuyerEntity;
 import com.marketplace.users.models.enumerations.RoleEnum;
 import com.marketplace.users.services.BuyerService;
+import com.marketplace.users.services.UserService;
 import com.marketplace.users.services.exceptions.InvalidEmailOrPasswordException;
 import com.marketplace.users.services.exceptions.InvalidEntityToPersistException;
 import com.marketplace.users.services.exceptions.NotFoundEntityException;
@@ -18,7 +19,7 @@ import javax.validation.Valid;
 public class BuyerController {
 
     @Autowired
-    BuyerService buyerService;
+    UserService buyerService;
 
     @RequestMapping(value="/register", method = RequestMethod.POST)
     public ResponseEntity<Object> createBuyer(@RequestBody @Valid BuyerEntity buyer){
