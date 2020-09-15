@@ -1,7 +1,8 @@
 package com.marketplace.users.controllers;
 
 import com.marketplace.users.models.SellerEntity;
-import com.marketplace.users.services.SellerService;
+import com.marketplace.users.models.UserEntity;
+import com.marketplace.users.services.UserService;
 import com.marketplace.users.services.exceptions.InvalidEmailOrPasswordException;
 import com.marketplace.users.services.exceptions.InvalidEntityToPersistException;
 import com.marketplace.users.services.exceptions.NotFoundEntityException;
@@ -20,7 +21,7 @@ import static org.mockito.MockitoAnnotations.initMocks;
 
 class SellerControllerTest {
     @Mock
-    SellerService mockSellerService ;
+    UserService mockSellerService ;
 
     @InjectMocks
     SellerController sellerController = new SellerController();
@@ -90,31 +91,31 @@ class SellerControllerTest {
     @Test
     void getBydId() throws NotFoundEntityException {
         SellerEntity seller = new SellerEntity("AAA", "aaa", "a@a.com", "test");
-        when(mockSellerService.getById(1)).thenReturn(seller);
-        ResponseEntity response = sellerController.getBydId(1);
+        when(mockSellerService.getById(1L)).thenReturn(seller);
+        ResponseEntity response = sellerController.getBydId(1L);
         assertTrue(response.getBody().equals(seller));
     }
 
     @Test
     void getByIdInvalidEntityException() throws NotFoundEntityException {
         NotFoundEntityException e = new NotFoundEntityException("", "", "");
-        doThrow(e).when(mockSellerService).getById(1);
-        ResponseEntity response = sellerController.getBydId(1);
+        doThrow(e).when(mockSellerService).getById(1L);
+        ResponseEntity response = sellerController.getBydId(1L);
         assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
     }
 
     @Test
     void getByIdUnknownException() throws NotFoundEntityException {
-        when(mockSellerService.getById(anyInt())).thenThrow(RuntimeException.class);
-        ResponseEntity response = sellerController.getBydId(anyInt());
+        when(mockSellerService.getById(anyLong())).thenThrow(RuntimeException.class);
+        ResponseEntity response = sellerController.getBydId(anyLong());
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
     }
 
     @Test
     void getAll() throws NotFoundEntityException {
-        SellerEntity seller1 = new SellerEntity("AAA", "aaa", "a@a.com", "test");
-        SellerEntity seller2 = new SellerEntity("BBB", "bbb", "b@b.com", "test");
-        List<SellerEntity> sellers = new ArrayList<>();
+        UserEntity seller1 = new SellerEntity("AAA", "aaa", "a@a.com", "test");
+        UserEntity seller2 = new SellerEntity("BBB", "bbb", "b@b.com", "test");
+        List<UserEntity> sellers = new ArrayList<>();
         sellers.add(seller1);
         sellers.add(seller2);
         when(mockSellerService.all()).thenReturn(sellers);
@@ -140,26 +141,26 @@ class SellerControllerTest {
 
     @Test
     void delete() throws NotFoundEntityException {
-        doNothing().when(mockSellerService).delete(anyInt());
+        doNothing().when(mockSellerService).delete(anyLong());
         sellerController = spy(sellerController);
-        ResponseEntity response = sellerController.delete(1);
-        Mockito.verify(mockSellerService, times(1)).delete(any(Integer.class));
+        ResponseEntity response = sellerController.delete(1L);
+        Mockito.verify(mockSellerService, times(1)).delete(any(Long.class));
         assertEquals(HttpStatus.OK, response.getStatusCode());
     }
 
     @Test
     void deleteNotFoundException() throws NotFoundEntityException {
         NotFoundEntityException e = new NotFoundEntityException("", "", "");
-        doThrow(e).when(mockSellerService).delete(anyInt());
-        ResponseEntity response = sellerController.delete(1);
+        doThrow(e).when(mockSellerService).delete(anyLong());
+        ResponseEntity response = sellerController.delete(1L);
         assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
     }
 
     @Test
     void deleteUnknownException() throws NotFoundEntityException {
-        doThrow(RuntimeException.class).when(mockSellerService).delete(anyInt());
-        ResponseEntity response = sellerController.delete(1);
-        verify(mockSellerService, times(1)).delete(anyInt());
+        doThrow(RuntimeException.class).when(mockSellerService).delete(anyLong());
+        ResponseEntity response = sellerController.delete(1L);
+        verify(mockSellerService, times(1)).delete(anyLong());
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
     }
 }

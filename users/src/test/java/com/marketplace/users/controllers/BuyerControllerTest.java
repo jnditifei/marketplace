@@ -1,7 +1,8 @@
 package com.marketplace.users.controllers;
 
 import com.marketplace.users.models.BuyerEntity;
-import com.marketplace.users.services.BuyerService;
+import com.marketplace.users.models.UserEntity;
+import com.marketplace.users.services.UserService;
 import com.marketplace.users.services.exceptions.InvalidEmailOrPasswordException;
 import com.marketplace.users.services.exceptions.InvalidEntityToPersistException;
 import com.marketplace.users.services.exceptions.NotFoundEntityException;
@@ -23,7 +24,7 @@ import static org.mockito.MockitoAnnotations.initMocks;
 class BuyerControllerTest {
 
     @Mock
-    BuyerService mockBuyerService;
+    UserService mockBuyerService;
 
     @InjectMocks
     BuyerController buyerController = new BuyerController();
@@ -91,8 +92,8 @@ class BuyerControllerTest {
     @Test
     void getBuyerById() throws NotFoundEntityException {
         BuyerEntity buyer = new BuyerEntity("AAA", "aaa", "a@a.com", "test");
-        when(mockBuyerService.getById(1)).thenReturn(buyer);
-        ResponseEntity response = buyerController.getBuyerById(1);
+        when(mockBuyerService.getById(1L)).thenReturn(buyer);
+        ResponseEntity response = buyerController.getBuyerById(1L);
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(buyer, response.getBody());
     }
@@ -100,24 +101,24 @@ class BuyerControllerTest {
     @Test
     void getByIdNotFoundexception() throws NotFoundEntityException {
         NotFoundEntityException e = new NotFoundEntityException("Id Invalid", "", "");
-        doThrow(e).when(mockBuyerService).getById(any(Integer.class));
-        ResponseEntity response = buyerController.getBuyerById(1);
+        doThrow(e).when(mockBuyerService).getById(any(Long.class));
+        ResponseEntity response = buyerController.getBuyerById(1L);
         assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
         assertTrue(response.getBody().equals(e.getErrorDto()));
     }
 
     @Test
     void getByIdUnknownException() throws NotFoundEntityException {
-        doThrow(RuntimeException.class).when(mockBuyerService).getById(anyInt());
-        ResponseEntity response = buyerController.getBuyerById(anyInt());
+        doThrow(RuntimeException.class).when(mockBuyerService).getById(anyLong());
+        ResponseEntity response = buyerController.getBuyerById(anyLong());
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
     }
 
     @Test
     void getAllBuyers() throws NotFoundEntityException {
-        BuyerEntity buyer1 = new BuyerEntity("AAA", "aaa", "a@a.com", "test");
-        BuyerEntity buyer2 = new BuyerEntity("BBB", "bbb", "b@b.com", "test");
-        List<BuyerEntity> buyers = new ArrayList<>();
+        UserEntity buyer1 = new BuyerEntity("AAA", "aaa", "a@a.com", "test");
+        UserEntity buyer2 = new BuyerEntity("BBB", "bbb", "b@b.com", "test");
+        List<UserEntity> buyers = new ArrayList<>();
         buyers.add(buyer1);
         buyers.add(buyer2);
         when(mockBuyerService.all()).thenReturn(buyers);
@@ -143,23 +144,23 @@ class BuyerControllerTest {
 
     @Test
     void deleteBuyer() throws NotFoundEntityException {
-        doNothing().when(mockBuyerService).delete(anyInt());
-        assertEquals(HttpStatus.OK, buyerController.deleteBuyer(1).getStatusCode());
-        verify(mockBuyerService, times(1)).delete(anyInt());
+        doNothing().when(mockBuyerService).delete(anyLong());
+        assertEquals(HttpStatus.OK, buyerController.deleteBuyer(1L).getStatusCode());
+        verify(mockBuyerService, times(1)).delete(anyLong());
     }
 
     @Test
     void deleteNotFoundException() throws NotFoundEntityException {
         NotFoundEntityException e = new NotFoundEntityException("ID invalid", "", "");
-        doThrow(e).when(mockBuyerService).delete(anyInt());
-        assertEquals(HttpStatus.BAD_REQUEST, buyerController.deleteBuyer(1).getStatusCode());
-        verify(mockBuyerService, times(1)).delete(anyInt());
+        doThrow(e).when(mockBuyerService).delete(anyLong());
+        assertEquals(HttpStatus.BAD_REQUEST, buyerController.deleteBuyer(1L).getStatusCode());
+        verify(mockBuyerService, times(1)).delete(anyLong());
     }
 
     @Test
     void deleteUnknownException() throws NotFoundEntityException {
-        doThrow(RuntimeException.class).when(mockBuyerService).delete(anyInt());
-        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, buyerController.deleteBuyer(2).getStatusCode());
-        verify(mockBuyerService, times(1)).delete(anyInt());
+        doThrow(RuntimeException.class).when(mockBuyerService).delete(anyLong());
+        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, buyerController.deleteBuyer(2L).getStatusCode());
+        verify(mockBuyerService, times(1)).delete(anyLong());
     }
 }
