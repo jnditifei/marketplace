@@ -6,6 +6,7 @@ import com.marketplace.users.models.SellerEntity;
 import com.marketplace.users.models.UserEntity;
 import com.marketplace.users.services.AddressService;
 import com.marketplace.users.services.UserService;
+import com.marketplace.users.services.exceptions.InvalidEmailOrPasswordException;
 import com.marketplace.users.services.exceptions.InvalidEntityToPersistException;
 import com.marketplace.users.services.exceptions.NotFoundEntityException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,8 @@ public class AddressController {
             e.getErrorDto().setStatus(400);
             return new ResponseEntity<>(e.getErrorDto(), HttpStatus.BAD_REQUEST);
         } catch (NotFoundEntityException e) {
+            return new ResponseEntity<>(e.getErrorDto(), HttpStatus.BAD_REQUEST);
+        } catch (InvalidEmailOrPasswordException e) {
             return new ResponseEntity<>(e.getErrorDto(), HttpStatus.BAD_REQUEST);
         }
     }

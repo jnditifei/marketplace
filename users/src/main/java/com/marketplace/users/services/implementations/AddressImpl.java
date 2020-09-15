@@ -45,6 +45,11 @@ public class AddressImpl implements AddressService {
     }
 
     @Override
+    public List<AddressEntity> all() throws NotFoundEntityException {
+        return null;
+    }
+
+    @Override
     public void delete(long id) throws NotFoundEntityException {
         AddressEntity addresFound = repo.findById(id).get();
         if(!repo.findById(id).isPresent())

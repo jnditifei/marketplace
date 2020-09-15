@@ -19,7 +19,7 @@ public class UserEntity {
 
     @Id
     @GeneratedValue(strategy= GenerationType.TABLE)
-    private int userId;
+    private long userId;
 
     @NotNull
     private String fistName;
@@ -76,7 +76,7 @@ public class UserEntity {
         this.phoneNumber = phoneNumber;
     }
 
-    public int getUserId() {
+    public long getUserId() {
         return userId;
     }
 

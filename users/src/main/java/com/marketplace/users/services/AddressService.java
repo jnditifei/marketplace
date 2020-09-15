@@ -6,15 +6,8 @@ import com.marketplace.users.services.exceptions.NotFoundEntityException;
 
 import java.util.List;
 
-public interface AddressService {
-
-    void save(AddressEntity address) throws InvalidEntityToPersistException;
+public interface AddressService extends GenericService<AddressEntity, Long> {
 
     void  saveAll(List<AddressEntity> adresses);
 
-    AddressEntity update(AddressEntity address) throws NotFoundEntityException;
-
-    AddressEntity getById(long addressId) throws NotFoundEntityException;
-
-    void delete(long id) throws NotFoundEntityException;
 }

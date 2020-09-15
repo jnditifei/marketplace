@@ -2,7 +2,6 @@ package com.marketplace.users.controllers;
 
 import com.marketplace.users.models.enumerations.RoleEnum;
 import com.marketplace.users.models.SellerEntity;
-import com.marketplace.users.services.SellerService;
 import com.marketplace.users.services.UserService;
 import com.marketplace.users.services.exceptions.InvalidEmailOrPasswordException;
 import com.marketplace.users.services.exceptions.InvalidEntityToPersistException;
@@ -53,7 +52,7 @@ public class SellerController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Object> getBydId(@PathVariable int id){
+    public ResponseEntity<Object> getBydId(@PathVariable long id){
         try{
             return new ResponseEntity<>(sellerService.getById(id), HttpStatus.OK);
         }catch(NotFoundEntityException e){
@@ -79,7 +78,7 @@ public class SellerController {
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<Object> delete(@PathVariable int id) {
+    public ResponseEntity<Object> delete(@PathVariable long id) {
         try {
             sellerService.delete(id);
             return new ResponseEntity<>(HttpStatus.OK);
