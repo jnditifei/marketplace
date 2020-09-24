@@ -2,7 +2,6 @@ package com.marketplace.users.controllers;
 
 
 import com.marketplace.users.models.AddressEntity;
-import com.marketplace.users.models.SellerEntity;
 import com.marketplace.users.models.UserEntity;
 import com.marketplace.users.services.AddressService;
 import com.marketplace.users.services.UserService;

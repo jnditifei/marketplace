@@ -32,12 +32,18 @@ import org.springframework.data.mongodb.repository.support.MongoRepositoryFactor
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.MockitoAnnotations.initMocks;;
 
 import java.util.List;
 
 @DataMongoTest()
 @ExtendWith(SpringExtension.class)
 public class ProductRepoTest {
+
+    /***
+     * SI UTILISATION DE MONGODB AVEC DOCKER MERCI DE STOPPER LE CONTAINER AVANT DE LANCER LES TESTS
+      */
+
 
     @Autowired
     ProductRepo productRepo;

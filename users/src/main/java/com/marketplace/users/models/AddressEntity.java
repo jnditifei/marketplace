@@ -71,6 +71,18 @@ public class AddressEntity {
         return owner;
     }
 
+    public void setAdressId(long adressId) {
+        this.adressId = adressId;
+    }
+
+    public AddressEntity(String streetName, @Pattern(message = "Le code postal doit être composé uniquement de 5 chiffres", regexp = "([0-9]{5})|({0})") String postalCode, String city, CountryEnum country, UserEntity owner) {
+        this.streetName = streetName;
+        this.postalCode = postalCode;
+        this.city = city;
+        this.country = country;
+        this.owner = owner;
+    }
+
     public void setOwner(UserEntity owner) {
         this.owner = owner;
     }

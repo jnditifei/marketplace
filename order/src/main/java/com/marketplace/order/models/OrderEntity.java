@@ -1,23 +1,15 @@
 package com.marketplace.order.models;
 
-import org.neo4j.ogm.annotation.GeneratedValue;
-import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 
+import javax.persistence.EmbeddedId;
 import java.util.Date;
 
 @NodeEntity
-public class Order {
+public class OrderEntity {
 
-    @Id
-    @GeneratedValue
-    private long id;
-
-    private long userId;
-
-    private long productId;
-
-    private long addressId;
+    @EmbeddedId
+    private OrderID id;
 
     private long price;
 
@@ -27,28 +19,15 @@ public class Order {
 
     private String status;
 
-    public Order() {
+    public OrderEntity() {
     }
 
-    public long getId() {
+    public OrderID getId() {
         return id;
     }
 
-
-    public long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(long userId) {
-        this.userId = userId;
-    }
-
-    public long getProductId() {
-        return productId;
-    }
-
-    public void setProductId(long productId) {
-        this.productId = productId;
+    public void setId(OrderID id) {
+        this.id = id;
     }
 
     public long getPrice() {

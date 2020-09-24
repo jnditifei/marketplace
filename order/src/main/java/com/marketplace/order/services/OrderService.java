@@ -1,4 +1,7 @@
 package com.marketplace.order.services;
 
-public interface OrderService {
+import com.marketplace.order.models.OrderEntity;
+import com.marketplace.order.models.OrderID;
+
+public interface OrderService extends GenericService<OrderEntity, OrderID>{
 }

@@ -77,7 +77,7 @@ class BuyerControllerTest {
         when(mockBuyerService.update(any(BuyerEntity.class))).thenReturn(buyer);
         ResponseEntity response = buyerController.update(buyer);
         assertTrue(response.getBody().equals(buyer));
-        ;       assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(HttpStatus.OK, response.getStatusCode());
     }
 
     @Test
