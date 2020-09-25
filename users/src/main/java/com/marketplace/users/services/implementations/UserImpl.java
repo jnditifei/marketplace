@@ -1,6 +1,5 @@
 package com.marketplace.users.services.implementations;
 
-import com.marketplace.users.models.BuyerEntity;
 import com.marketplace.users.models.UserEntity;
 import com.marketplace.users.repositories.UserRepo;
 import com.marketplace.users.services.UserService;

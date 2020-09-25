@@ -1,7 +1,11 @@
 package com.marketplace.order.services;
 
 import com.marketplace.order.models.OrderEntity;
-import com.marketplace.order.models.OrderID;
 
-public interface OrderService extends GenericService<OrderEntity, OrderID>{
+import java.util.List;
+
+public interface OrderService extends GenericService<OrderEntity, Long>{
+    List<OrderEntity> allBySellerId(long userId);
+
+    List<OrderEntity> allByBuyerId(long id);
 }

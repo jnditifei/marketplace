@@ -1,15 +1,27 @@
 package com.marketplace.order.models;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.neo4j.ogm.annotation.GeneratedValue;
+import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
+import org.neo4j.ogm.annotation.Relationship;
 
-import javax.persistence.EmbeddedId;
 import java.util.Date;
+import java.util.List;
 
 @NodeEntity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class OrderEntity {
 
-    @EmbeddedId
-    private OrderID id;
+    @Id
+    @GeneratedValue
+    private Long OrderId;
 
     private long price;
 
@@ -19,46 +31,15 @@ public class OrderEntity {
 
     private String status;
 
-    public OrderEntity() {
-    }
+    private long buyerId;
 
-    public OrderID getId() {
-        return id;
-    }
+    private List<String> productId;
 
-    public void setId(OrderID id) {
-        this.id = id;
-    }
+    private long addressId;
 
-    public long getPrice() {
-        return price;
-    }
+    private long sellerId;
 
-    public void setPrice(long price) {
-        this.price = price;
-    }
+    @Relationship(type = "ACTED_IN", direction = Relationship.OUTGOING)
+    private List<CommentEntity> comments;
 
-    public Date getOrderDate() {
-        return orderDate;
-    }
-
-    public void setOrderDate(Date orderDate) {
-        this.orderDate = orderDate;
-    }
-
-    public Date getShipmentDate() {
-        return shipmentDate;
-    }
-
-    public void setShipmentDate(Date shipmentDate) {
-        this.shipmentDate = shipmentDate;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
 }

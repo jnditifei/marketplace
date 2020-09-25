@@ -1,10 +1,6 @@
-package com.marketplace.order.models;
+package com.marketplace.users.proxies.beans;
 
-import javax.persistence.Embeddable;
-import java.io.Serializable;
-
-@Embeddable
-public class OrderID implements Serializable {
+public class OrderId {
 
     private long buyerId;
     private String productId;
