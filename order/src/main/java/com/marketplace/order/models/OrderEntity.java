@@ -11,6 +11,7 @@ import org.neo4j.ogm.annotation.Relationship;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 @NodeEntity
 @Getter
@@ -42,4 +43,25 @@ public class OrderEntity {
     @Relationship(type = "Belong_to", direction = Relationship.INCOMING)
     private ReviewEntity review;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        OrderEntity that = (OrderEntity) o;
+        return price == that.price &&
+                buyerId == that.buyerId &&
+                addressId == that.addressId &&
+                sellerId == that.sellerId &&
+                Objects.equals(orderId, that.orderId) &&
+                Objects.equals(orderDate, that.orderDate) &&
+                Objects.equals(shipmentDate, that.shipmentDate) &&
+                Objects.equals(status, that.status) &&
+                Objects.equals(productId, that.productId) &&
+                Objects.equals(review, that.review);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(orderId, price, orderDate, shipmentDate, status, buyerId, productId, addressId, sellerId, review);
+    }
 }
