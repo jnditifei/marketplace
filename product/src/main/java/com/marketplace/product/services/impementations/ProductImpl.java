@@ -1,5 +1,6 @@
 package com.marketplace.product.services.impementations;
 
+import com.google.common.collect.Iterables;
 import com.marketplace.product.models.ProductEntity;
 import com.marketplace.product.repositories.ProductRepo;
 import com.marketplace.product.services.ProductService;
@@ -65,7 +66,8 @@ public class ProductImpl implements ProductService {
 
     public Iterable<ProductEntity> rangeOfPrice(long pricelt, long pricegt) throws  NotFoundEntityException {
         Iterable<ProductEntity> products =  productRepo.findByRangeOfPrice(pricelt, pricegt, Sort.by(Sort.Direction.ASC, "price"));
-        if (products == null)
+        //Iterables.isEmpty(products);
+        if (!products.iterator().hasNext())
             throw  new NotFoundEntityException("Aucun résultat", "Aucun résultat ne corresppond a votre requête", "");
         //Résultat retourner trier par ascendant selon la propriété price
         return products;

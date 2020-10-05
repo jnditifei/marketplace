@@ -32,16 +32,9 @@ public class ProductEntity {
 
     private List<String> image;
 
-    public List<CommentEntity> getComment() {
-        return comment;
+    public void setId(String id) {
+        this.id = id;
     }
-
-    public void setComment(List<CommentEntity> comment) {
-        this.comment = comment;
-    }
-
-    @DBRef(lazy = true)
-    private List<CommentEntity> comment;
 
     public ProductEntity() {
     }
