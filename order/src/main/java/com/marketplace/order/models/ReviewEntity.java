@@ -7,13 +7,14 @@ import lombok.Setter;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
+import org.neo4j.ogm.annotation.Relationship;
 
 @NodeEntity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CommentEntity {
+public class ReviewEntity {
 
     @Id
     @GeneratedValue
@@ -22,4 +23,7 @@ public class CommentEntity {
     private String title;
 
     private String body;
+
+    @Relationship(type = "Belong_to")
+    private OrderEntity order;
 }

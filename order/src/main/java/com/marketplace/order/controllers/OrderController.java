@@ -1,8 +1,8 @@
 package com.marketplace.order.controllers;
 
-import com.marketplace.order.models.CommentEntity;
+import com.marketplace.order.models.ReviewEntity;
 import com.marketplace.order.models.OrderEntity;
-import com.marketplace.order.services.CommentService;
+import com.marketplace.order.services.ReviewService;
 import com.marketplace.order.services.OrderService;
 import com.marketplace.order.services.exceptions.InvalidEntityToPersistException;
 import com.marketplace.order.services.exceptions.NotFoundEntityException;
@@ -21,13 +21,13 @@ public class OrderController {
     OrderService orderService;
 
     @Autowired
-    CommentService commentService;
+    ReviewService reviewService;
 
     @PostMapping(value = "/create")
     ResponseEntity<Object> createOrder(@RequestBody @Valid OrderEntity order) {
         try {
             orderService.save(order);
-            return new ResponseEntity<>(HttpStatus.OK);
+            return new ResponseEntity<>("validé",HttpStatus.OK);
         }catch (InvalidEntityToPersistException e){
             return new ResponseEntity<>(e.getErrorDto(), HttpStatus.BAD_REQUEST);
         }
@@ -72,11 +72,11 @@ public class OrderController {
     }
 
     @PostMapping(value = "/{id}/newcomment")
-    ResponseEntity<Object> addNewComment( @PathVariable long id, @RequestBody @Valid CommentEntity comment ){
+    ResponseEntity<Object> addNewComment( @PathVariable long id, @RequestBody @Valid ReviewEntity review ){
         try{
             OrderEntity order = orderService.getById(id);
-            commentService.save(comment);
-            order.getComments().add(comment);
+            reviewService.save(review);
+            order.setReview(review);
             return new ResponseEntity<>(orderService.update(order), HttpStatus.OK);
         }catch (NotFoundEntityException e){
             return new ResponseEntity<>(e.getErrorDto(), HttpStatus.BAD_REQUEST);

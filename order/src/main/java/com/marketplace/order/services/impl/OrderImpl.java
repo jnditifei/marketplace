@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.StreamSupport;
 
 @Service
 public class OrderImpl implements OrderService {
@@ -35,6 +36,9 @@ public class OrderImpl implements OrderService {
 
     @Override
     public Iterable<OrderEntity> all() throws NotFoundEntityException {
+        Long length = StreamSupport.stream(orderRepo.findAll().spliterator(), false).count();
+        if (length <= 0)
+            throw new NotFoundEntityException("BDD vide", "", "");
         return orderRepo.findAll();
     }
 

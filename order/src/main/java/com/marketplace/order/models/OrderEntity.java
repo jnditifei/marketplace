@@ -21,7 +21,7 @@ public class OrderEntity {
 
     @Id
     @GeneratedValue
-    private Long OrderId;
+    private Long orderId;
 
     private long price;
 
@@ -39,7 +39,7 @@ public class OrderEntity {
 
     private long sellerId;
 
-    @Relationship(type = "ACTED_IN", direction = Relationship.OUTGOING)
-    private List<CommentEntity> comments;
+    @Relationship(type = "Belong_to", direction = Relationship.INCOMING)
+    private ReviewEntity review;
 
 }
