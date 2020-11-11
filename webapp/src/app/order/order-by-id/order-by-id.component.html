@@ -1,0 +1,7 @@
+<div>
+    <div><label>ID:</label>{{order?.orderId}}</div>
+    <div><label>Status:</label>{{order?.status}}</div>
+    <div><label>Price:</label>{{order?.price}}</div>
+    <td><button (click)="deleteById(order.orderId)" class="btn btn-danger">Delete</button>
+    <div><a [routerLink]='"/commandes"'>List</a></div>
+</div>

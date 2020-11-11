@@ -1,0 +1,29 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Order List</h2>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Details</th>
+            <th>Buyer</th>
+            <th>Seller</th>
+            <th>Address</th>
+            <th>Statut</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of orders | async">
+            <td> <a [routerLink]="['/commande', order.orderId]">voir</a></td>
+            <td>{{getBuyer(order?.buyerId)}}</td>
+            <td>{{getSeller(order?.sellerId)}}</td>
+            <td>{{getAddress(order?.addressId)}}</td>
+            <td>{{order.status}}</td>
+            <td>{{order.price}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
