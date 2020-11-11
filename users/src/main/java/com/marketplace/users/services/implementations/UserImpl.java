@@ -51,7 +51,7 @@ public class UserImpl implements UserService {
     }
 
     @Override
-    public UserEntity getById(long id) throws NotFoundEntityException {
+    public UserEntity getById(Long id) throws NotFoundEntityException {
         if(!userRepo.findById(id).isPresent())
             throw new NotFoundEntityException("iD invalid", "", "");
         return userRepo.findById(id).get();
@@ -65,7 +65,7 @@ public class UserImpl implements UserService {
     }
 
     @Override
-    public void delete(long userId) throws NotFoundEntityException {
+    public void delete(Long userId) throws NotFoundEntityException {
         if(!userRepo.findById(userId).isPresent())
             throw new NotFoundEntityException("Aucun objet","Aucun objet n'a encore été créé dans la base de donnée", localisation+"delete");
         UserEntity deleteBuyer = userRepo.getOne(userId);

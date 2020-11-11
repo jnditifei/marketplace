@@ -30,7 +30,7 @@ public class OrderImpl implements OrderService {
     }
 
     @Override
-    public OrderEntity getById(long id) throws NotFoundEntityException {
+    public OrderEntity getById(Long id) throws NotFoundEntityException {
         return orderRepo.findById(id).get();
     }
 
@@ -43,7 +43,7 @@ public class OrderImpl implements OrderService {
     }
 
     @Override
-    public void delete(long id) throws NotFoundEntityException {
+    public void delete(Long id) throws NotFoundEntityException {
         orderRepo.deleteById(id);
     }
 

@@ -25,7 +25,7 @@ public class ReviewImpl implements ReviewService {
     }
 
     @Override
-    public ReviewEntity getById(long id) throws NotFoundEntityException {
+    public ReviewEntity getById(Long id) throws NotFoundEntityException {
         return null;
     }
 
@@ -35,7 +35,7 @@ public class ReviewImpl implements ReviewService {
     }
 
     @Override
-    public void delete(long id) throws NotFoundEntityException {
+    public void delete(Long id) throws NotFoundEntityException {
 
     }
 }

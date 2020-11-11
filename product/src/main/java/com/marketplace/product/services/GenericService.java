@@ -8,8 +8,8 @@ public interface GenericService<Entity, ID> {
 
     void save(Entity entity) throws InvalidEntityToPersistException;
     Entity update(Entity entity) throws NotFoundEntityException;
-    Entity getById(String userId) throws NotFoundEntityException;
+    Entity getById(ID userId) throws NotFoundEntityException;
     Iterable<Entity> all() throws NotFoundEntityException;
-    void delete(String userId) throws NotFoundEntityException;
+    void delete(ID userId) throws NotFoundEntityException;
 }
 

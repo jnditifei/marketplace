@@ -71,8 +71,8 @@ public class OrderController {
         }
     }
 
-    @PostMapping(value = "/{id}/newcomment")
-    ResponseEntity<Object> addNewComment( @PathVariable long id, @RequestBody @Valid ReviewEntity review ){
+    @PostMapping(value = "/{id}/newreview")
+    ResponseEntity<Object> addNewReview( @PathVariable long id, @RequestBody @Valid ReviewEntity review ){
         try{
             OrderEntity order = orderService.getById(id);
             reviewService.save(review);

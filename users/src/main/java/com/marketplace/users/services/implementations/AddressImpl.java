@@ -38,7 +38,7 @@ public class AddressImpl implements AddressService {
     }
 
     @Override
-    public AddressEntity getById(long addressId) throws NotFoundEntityException{
+    public AddressEntity getById(Long addressId) throws NotFoundEntityException{
         if(!repo.findById(addressId).isPresent())
             throw new NotFoundEntityException("Id invalide","","");
         return repo.findById(addressId).get();
@@ -50,7 +50,7 @@ public class AddressImpl implements AddressService {
     }
 
     @Override
-    public void delete(long id) throws NotFoundEntityException {
+    public void delete(Long id) throws NotFoundEntityException {
         if(!repo.findById(id).isPresent())
             throw new NotFoundEntityException("id invalide", "l'objet n'existe pas", "");
         repo.deleteById(id);

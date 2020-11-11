@@ -26,7 +26,7 @@ public class AddressController {
     UserService userService;
 
     @PostMapping(value = "/{userId}/create")
-    public ResponseEntity<Object> createAddress(@PathVariable int userId, @RequestBody @Valid AddressEntity address) {
+    public ResponseEntity<Object> createAddress(@PathVariable long userId, @RequestBody @Valid AddressEntity address) {
         try {
             UserEntity owner = userService.getById(userId);
             address.setOwner(owner);
@@ -63,7 +63,7 @@ public class AddressController {
     }
 
     @DeleteMapping(value = "/delete/{id}")
-    public ResponseEntity<Object> deleteAddress(@PathVariable int id) {
+    public ResponseEntity<Object> deleteAddress(@PathVariable long id) {
         try{
             addressService.delete(id);
             return new ResponseEntity<>(HttpStatus.OK);
